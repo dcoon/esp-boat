@@ -1,0 +1,78 @@
+esphome:
+  name: starboard-freezer
+
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: ""
+
+ota:
+  password: ""
+
+wifi:
+  ssid: "svHarmony24"
+  password: "I Love Harmony!"
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Staboard-Freezer"
+    password: "CpIzIQ7pnW3Q"
+
+captive_portal:
+
+switch:
+  - platform: gpio
+    id: "starboard_freezer_compressor"
+    name: "Starboard Freezer Compressor"
+    pin: 16
+    restore_mode: always_off
+
+dallas:
+  - pin: 23
+    update_interval: 5s
+
+i2c:
+  - sda: 21
+    scl: 22
+
+sensor:
+  - platform: dallas
+    address: 0xa8012052cbcfa828
+    id: "starboard_freezer_temperature"
+    name: "Starboard Freezer Temperature"
+  - platform: ina3221
+    address: 0x42
+    update_interval: 5s
+    channel_3:
+      shunt_resistance: 0.025 ohm
+      current:
+        name: "Starboard Freezer Current"
+      power:
+        name: "Starboard Freezer Power"
+      bus_voltage:
+        name: "Staboard Freezer Voltage"
+climate:
+  - platform: thermostat
+    name: "Starboard Freezer Thermostat"
+    sensor: starboard_freezer_temperature
+    default_target_temperature_high: 4C
+    visual:
+      min_temperature: -10C
+      max_temperature: 20C
+    min_cooling_off_time: 180s
+    min_cooling_run_time: 180s
+    min_idle_time: 30s
+    cool_action:
+      - switch.turn_on: starboard_freezer_compressor
+    idle_action:
+      - switch.turn_off: starboard_freezer_compressor
+    startup_delay: true
+    cool_deadband: 3C
+    cool_overrun: 3C

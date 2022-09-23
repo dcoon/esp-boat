@@ -1,0 +1,53 @@
+esphome:
+  name: tanksensor-water
+
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: "I Love Harmony!"
+
+ota:
+  password: "I Love Harmony!"
+
+wifi:
+  ssid: "svHarmony24"
+  password: "I Love Harmony!"
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Tanksensor1 Fallback Hotspot"
+    password: "4CcV8hmsVdWz"
+
+captive_portal:
+
+
+sensor:
+  - platform: adc
+    pin: GPIO34
+    name: "Port Water Tank Voltage"
+    id: "port_water_tank_voltage"
+    attenuation: auto
+    update_interval: 10s
+    unit_of_measurement: "V"
+    on_value:
+      - sensor.template.publish:
+          id: port_water_tank_level
+          state: !lambda 'return id(port_water_tank_voltage).state;' 
+  - platform: template
+    name: "Port Water Tank Level"
+    id: "port_water_tank_level"
+    unit_of_measurement: "%"
+    filters:
+      - calibrate_linear:
+          - 0.07 -> 0
+          - 0.075 -> 50
+          - 0.08 -> 75
+          - 0.09 -> 100
+    

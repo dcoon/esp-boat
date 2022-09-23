@@ -513,6 +513,9 @@
     (path "/1e95a0a5-bf4a-4399-8401-484382abcb47/bf072091-b869-4608-872e-d5fcf93509f6"
       (reference "#PWR012") (unit 1) (value "GND") (footprint "")
     )
+    (path "/d9f5eddb-e2bc-4f51-8d61-deccde939f63/2fbcfb3d-cb83-46f0-bb01-d42c5b707c33"
+      (reference "#PWR013") (unit 1) (value "GND") (footprint "")
+    )
     (path "/df7808d8-edb5-4f09-8052-6f4f50b2ce05/e38effef-24f2-422e-ab94-1bbfde871a35"
       (reference "#PWR015") (unit 1) (value "GND") (footprint "")
     )
@@ -612,6 +615,12 @@
     (path "/1e95a0a5-bf4a-4399-8401-484382abcb47/9ac53a01-a3ce-483c-840d-77c54eeff4b4"
       (reference "D7") (unit 1) (value "D_SCHOTTKY_40V") (footprint "Diode_SMD:D_SMA")
     )
+    (path "/d9f5eddb-e2bc-4f51-8d61-deccde939f63/d6722ba6-940b-4bfa-b558-aa339b88ed77"
+      (reference "D8") (unit 1) (value "D_TVS_30V") (footprint "Diode_SMD:D_SOD-123F")
+    )
+    (path "/d9f5eddb-e2bc-4f51-8d61-deccde939f63/0fe8ce85-9887-40fe-a537-2afdb088f801"
+      (reference "D9") (unit 1) (value "D_TVS_30V") (footprint "Diode_SMD:D_SOD-123F")
+    )
     (path "/d1840855-83fc-4558-9a13-27cb8e7b837f/9e2bb8ab-2417-429e-9d1c-509677c168ad"
       (reference "F1") (unit 1) (value "Polyfuse_5A") (footprint "Fuse:Fuse_Bourns_MF-RG1000")
     )
@@ -634,10 +643,10 @@
       (reference "PS1") (unit 1) (value "TPSM84205EAB") (footprint "CONV_TPSM84205EAB")
     )
     (path "/1e95a0a5-bf4a-4399-8401-484382abcb47/16e1932f-05ef-4062-89f0-124e11a6c5e7"
-      (reference "R1") (unit 1) (value "1k") (footprint "Resistor_SMD:R_0805_2012Metric")
+      (reference "R1") (unit 1) (value "6.8k") (footprint "Resistor_SMD:R_0805_2012Metric")
     )
     (path "/1e95a0a5-bf4a-4399-8401-484382abcb47/a2cbc0c6-032b-4895-a3e5-9478fbc24f85"
-      (reference "R2") (unit 1) (value "680") (footprint "Resistor_SMD:R_0805_2012Metric")
+      (reference "R2") (unit 1) (value "10000") (footprint "Resistor_SMD:R_0805_2012Metric")
     )
     (path "/1e95a0a5-bf4a-4399-8401-484382abcb47/60a57594-15d9-47d9-8400-b828412930aa"
       (reference "R3") (unit 1) (value "1k") (footprint "Resistor_SMD:R_0805_2012Metric")
